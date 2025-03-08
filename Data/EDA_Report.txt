@@ -1,0 +1,34 @@
+Column Information and Data Types:
+Age                   int64
+Gender                int64
+BMI                 float64
+Smoking               int64
+GeneticRisk           int64
+PhysicalActivity    float64
+AlcoholIntake       float64
+CancerHistory         int64
+Diagnosis             int64
+dtype: object
+
+Summary Statistics:
+               Age       Gender          BMI      Smoking  GeneticRisk  PhysicalActivity  AlcoholIntake  CancerHistory    Diagnosis
+count  1500.000000  1500.000000  1500.000000  1500.000000  1500.000000       1500.000000    1500.000000    1500.000000  1500.000000
+mean     50.320000     0.490667    27.513321     0.269333     0.508667          4.897929       2.417987       0.144000     0.371333
+std      17.640968     0.500080     7.230012     0.443761     0.678895          2.866162       1.419318       0.351207     0.483322
+min      20.000000     0.000000    15.000291     0.000000     0.000000          0.002410       0.001215       0.000000     0.000000
+25%      35.000000     0.000000    21.483134     0.000000     0.000000          2.434609       1.210598       0.000000     0.000000
+50%      51.000000     0.000000    27.598494     0.000000     0.000000          4.834316       2.382971       0.000000     0.000000
+75%      66.000000     1.000000    33.850837     1.000000     1.000000          7.409896       3.585624       0.000000     1.000000
+max      80.000000     1.000000    39.958688     1.000000     2.000000          9.994607       4.987115       1.000000     1.000000
+
+Missing Values Count:
+Age                 0
+Gender              0
+BMI                 0
+Smoking             0
+GeneticRisk         0
+PhysicalActivity    0
+AlcoholIntake       0
+CancerHistory       0
+Diagnosis           0
+
