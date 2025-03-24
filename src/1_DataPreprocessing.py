@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load dataset
-df = pd.read_csv("D:\Shakshi\Desktop\AI Ethics Project\Data\The_Cancer_data_1500_V2.csv")
+df = pd.read_csv("C:/Users/sugan/Desktop/DP-SGD/CSI5195-Project-Group14/Data/The_Cancer_data_1500_V2.csv")
 
 # Replace Gender codes with labels for better understanding
 # df['Gender'] = df['Gender'].replace({0: 'Male', 1: 'Female'})
@@ -17,7 +17,7 @@ print("\nMissing Values Count:")
 print(df.isnull().sum())
 
 # Save EDA text report
-with open("D:\Shakshi\Desktop\AI Ethics Project\Data\EDA_Report.txt", "w") as file:
+with open("C:/Users/sugan/Desktop/DP-SGD/CSI5195-Project-Group14/Data/EDA_Report.txt", "w") as file:
     file.write("Column Information and Data Types:\n")
     file.write(str(df.dtypes) + "\n\n")
     file.write("Summary Statistics:\n")
@@ -34,7 +34,7 @@ for i, column in enumerate(numerical_columns, 1):
     sns.histplot(df[column], kde=True)
     plt.title(f'{column} Distribution')
 plt.tight_layout()
-plt.savefig("D:\Shakshi\Desktop\AI Ethics Project\Data\eda_numerical_distributions.png")
+plt.savefig("C:/Users/sugan/Desktop/DP-SGD/CSI5195-Project-Group14/Data/The_Cancer_data_1500_V2.csv")
 plt.show()
 
 # Step 5: Boxplots (Outlier Detection)
@@ -44,17 +44,17 @@ for i, column in enumerate(numerical_columns, 1):
     sns.boxplot(x=df[column])
     plt.title(f'{column} Boxplot')
 plt.tight_layout()
-plt.savefig("D:\Shakshi\Desktop\AI Ethics Project\Data\eda_boxplots.png")
+plt.savefig("C:/Users/sugan/Desktop/DP-SGD/CSI5195-Project-Group14/Data/eda_boxplots.png")
 plt.show()
 
 # Step 6: Correlation Heatmap
 plt.figure(figsize=(10, 6))
 sns.heatmap(df.corr(), annot=True, cmap='coolwarm')
 plt.title("Feature Correlation Heatmap")
-plt.savefig("D:\Shakshi\Desktop\AI Ethics Project\Data\eda_correlation_heatmap.png")
+plt.savefig("C:/Users/sugan/Desktop/DP-SGD/CSI5195-Project-Group14/Data/eda_correlation_heatmap.png")
 plt.show()
 
 print("\n EDA Completed - Reports and Visualizations Saved!")
 
 # Create processed dataset and save
-df.to_csv("D:\Shakshi\Desktop\AI Ethics Project\Data\The_Cancer_data_1500_V2_Processed.csv", index=False)
+df.to_csv("C:/Users/sugan/Desktop/DP-SGD/CSI5195-Project-Group14/Data/The_Cancer_data_1500_V2_Processed.csv", index=False)

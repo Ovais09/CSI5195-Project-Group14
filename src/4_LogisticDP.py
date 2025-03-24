@@ -9,7 +9,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
 # Load the dataset
-df = pd.read_csv("D:\Shakshi\Desktop\AI Ethics Project\The_Cancer_data_1500_V2_Noised.csv")
+df = pd.read_csv("C:/Users/sugan/Desktop/DP-SGD/CSI5195-Project-Group14/Data/The_Cancer_data_1500_V2_Noised.csv")
 
 # Splitting dataset into features and target variable
 X = df.drop(columns=["Diagnosis"]) #X is independent variable
@@ -28,8 +28,8 @@ model = LogisticRegression(max_iter=1000)  # increase max_iter if convergence wa
 model.fit(X_train, y_train)
 
 # Save the model
-joblib.dump(model, "logistic_model_DP.pkl")
-joblib.dump(scaler, "scaler_DP.pkl")
+joblib.dump(model, "C:/Users/sugan/Desktop/DP-SGD/CSI5195-Project-Group14/model/logistic_model.pkl")
+joblib.dump(scaler, "C:/Users/sugan/Desktop/DP-SGD/CSI5195-Project-Group14/model/scaler.pkl")
 
 # Model Evaluation
 y_train_pred = model.predict(X_train)
@@ -64,10 +64,3 @@ def plot_confusion_matrix(y_true, y_pred):
     plt.show()
 
 plot_confusion_matrix(y_test, y_test_pred)
-
-# Prediction function for new data
-def predict_cancer(input_data):
-    input_array = np.array(input_data).reshape(1, -1)
-    input_scaled = scaler.transform(input_array)
-    prediction = model.predict(input_scaled)
-    return "Cancer Positive" if prediction[0] == 1 else "Cancer Negative"

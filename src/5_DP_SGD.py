@@ -10,7 +10,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score
 
 # Load Dataset
-df = pd.read_csv("D:\Shakshi\Desktop\AI Ethics Project\The_Cancer_data_1500_V2_Noised.csv")
+df = pd.read_csv("C:/Users/sugan/Desktop/DP-SGD/CSI5195-Project-Group14/Data/The_Cancer_data_1500_V2_Noised.csv")
 
 # Split Features & Target Variable
 X = df.drop(columns=["Diagnosis"]).values  # Convert to NumPy array
@@ -82,6 +82,6 @@ test_accuracy = accuracy_score(y_test, y_test_pred)
 print(f"\n DP-SGD Test Accuracy: {test_accuracy:.4f}")
 
 # Save Model & Scaler
-torch.save(model.state_dict(), "dp_sgd_model.pth")
-torch.save(scaler, "scaler_SGD.pkl")
+torch.save(model.state_dict(), "C:/Users/sugan/Desktop/DP-SGD/CSI5195-Project-Group14/model/dp_sgd_model.pth")
+torch.save(scaler, "C:/Users/sugan/Desktop/DP-SGD/CSI5195-Project-Group14/model/scaler_SGD.pkl")
 print("\n DP-SGD Model & Scaler Saved Successfully!")

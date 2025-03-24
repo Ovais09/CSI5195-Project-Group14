@@ -8,7 +8,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
 # Step 1: Load the Dataset
-df = pd.read_csv("D:\Shakshi\Desktop\AI Ethics Project\Data\The_Cancer_data_1500_V2.csv")
+df = pd.read_csv("C:/Users/sugan/Desktop/DP-SGD/CSI5195-Project-Group14/Data/The_Cancer_data_1500_V2_Processed.csv")
 
 # Step 3: Apply Differential Privacy (DP)
 def add_gaussian_noise(data, mean=0, std=0.5):
@@ -20,5 +20,5 @@ sensitive_features = ["BMI", "PhysicalActivity", "AlcoholIntake"]
 df[sensitive_features] = add_gaussian_noise(df[sensitive_features])
 
 # Save the new noised dataset
-df.to_csv("D:\Shakshi\Desktop\AI Ethics Project\Data\The_Cancer_data_1500_V2_Noised.csv", index=False)
+df.to_csv("C:/Users/sugan/Desktop/DP-SGD/CSI5195-Project-Group14/Data/The_Cancer_data_1500_V2_Noised.csv", index=False)
 print("\n Modified dataset with noise saved as: The_Cancer_data_1500_V2_Noised.csv")

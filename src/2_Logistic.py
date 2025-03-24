@@ -9,7 +9,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
 # Load the dataset
-df = pd.read_csv("D:\\Shakshi\\Desktop\\AI Ethics Project\\Data\\The_Cancer_data_1500_V2.csv")
+df = pd.read_csv("C:\\Users\\sugan\\Desktop\\DP-SGD\\CSI5195-Project-Group14\\Data\\The_Cancer_data_1500_V2_Processed.csv")
 
 # Splitting dataset into features and target variable
 X = df.drop(columns=["Diagnosis"]) #X is independent variable
@@ -28,8 +28,8 @@ model = LogisticRegression(max_iter=1000)  # increase max_iter if convergence wa
 model.fit(X_train, y_train)
 
 # Save the model
-joblib.dump(model, "logistic_model.pkl")
-joblib.dump(scaler, "scaler.pkl")
+joblib.dump(model, "C:/Users/sugan/Desktop/DP-SGD/CSI5195-Project-Group14/model/logistic_model.pkl")
+joblib.dump(scaler, "C:/Users/sugan/Desktop/DP-SGD/CSI5195-Project-Group14/model/scaler.pkl")
 
 # Model Evaluation
 y_train_pred = model.predict(X_train)

@@ -18,13 +18,13 @@ input_size = 8  # Adjust based on number of features
 model = LogisticRegressionModel(input_size)
 
 # Load the state dictionary and fix Opacus' _module. prefix issue
-state_dict = torch.load("dp_sgd_model.pth")
+state_dict = torch.load("C:/Users/sugan/Desktop/DP-SGD/CSI5195-Project-Group14/model/dp_sgd_model.pth")
 new_state_dict = {k.replace("_module.", ""): v for k, v in state_dict.items()}
 model.load_state_dict(new_state_dict)
 model.eval()
 
 # Load Scaler using joblib
-scaler = joblib.load("scaler_DP.pkl")
+scaler = joblib.load("C:/Users/sugan/Desktop/DP-SGD/CSI5195-Project-Group14/model/scaler_DP.pkl")
 
 # Feature Names
 feature_names = ["Age", "Gender", "BMI", "Smoking", "Genetic Risk", "Physical Activity", "Alcohol Intake", "Family Cancer History"]
