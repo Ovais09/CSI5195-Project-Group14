@@ -6,16 +6,16 @@ import joblib
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, roc_curve, auc
 
 # Load the dataset
 df = pd.read_csv("C:\\Users\\sugan\\Desktop\\DP-SGD\\CSI5195-Project-Group14\\Data\\The_Cancer_data_1500_V2_Processed.csv")
 
 # Splitting dataset into features and target variable
-X = df.drop(columns=["Diagnosis"]) #X is independent variable
-y = df["Diagnosis"]  #Y is dependent variable
+X = df.drop(columns=["Diagnosis"])  # X is independent variable
+y = df["Diagnosis"]  # Y is dependent variable
 
-# Train-Test Split (80% for training, 20% for testing)
+# Train-Test Split (80% training, 20% testing)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y) 
 
 # Feature Scaling
@@ -24,10 +24,10 @@ X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
 
 # Model Training (Logistic Regression)
-model = LogisticRegression(max_iter=1000)  # increase max_iter if convergence warning happens
+model = LogisticRegression(max_iter=1000)  # Increase max_iter if convergence warning happens
 model.fit(X_train, y_train)
 
-# Save the model
+# Save the model and scaler
 joblib.dump(model, "C:/Users/sugan/Desktop/DP-SGD/CSI5195-Project-Group14/model/logistic_model.pkl")
 joblib.dump(scaler, "C:/Users/sugan/Desktop/DP-SGD/CSI5195-Project-Group14/model/scaler.pkl")
 
@@ -65,9 +65,21 @@ def plot_confusion_matrix(y_true, y_pred):
 
 plot_confusion_matrix(y_test, y_test_pred)
 
-# Prediction function for new data
-def predict_cancer(input_data):
-    input_array = np.array(input_data).reshape(1, -1)
-    input_scaled = scaler.transform(input_array)
-    prediction = model.predict(input_scaled)
-    return "Cancer Positive" if prediction[0] == 1 else "Cancer Negative"
+# **NEW: Compute ROC Curve and AUC Score**
+y_test_proba = model.predict_proba(X_test)[:, 1]  # Get probabilities for the positive class
+fpr, tpr, _ = roc_curve(y_test, y_test_proba)
+roc_auc = auc(fpr, tpr)
+
+# **NEW: Plot ROC Curve**
+plt.figure(figsize=(6, 4))
+plt.plot(fpr, tpr, color='blue', lw=2, label=f'ROC curve (AUC = {roc_auc:.2f})')
+plt.plot([0, 1], [0, 1], color='grey', linestyle='--')  # Diagonal reference line
+plt.xlim([0.0, 1.0])
+plt.ylim([0.0, 1.05])
+plt.xlabel("False Positive Rate (FPR)")
+plt.ylabel("True Positive Rate (TPR)")
+plt.title("Receiver Operating Characteristic (ROC) Curve")
+plt.legend(loc="lower right")
+plt.show()
+
+print(f"ROC-AUC Score: {roc_auc:.2f}")

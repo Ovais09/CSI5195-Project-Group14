@@ -34,7 +34,7 @@ for i, column in enumerate(numerical_columns, 1):
     sns.histplot(df[column], kde=True)
     plt.title(f'{column} Distribution')
 plt.tight_layout()
-plt.savefig("C:/Users/sugan/Desktop/DP-SGD/CSI5195-Project-Group14/Data/The_Cancer_data_1500_V2.csv")
+plt.savefig("C:/Users/sugan/Desktop/DP-SGD/CSI5195-Project-Group14/Data/data_visualization.png")  # or any supported format
 plt.show()
 
 # Step 5: Boxplots (Outlier Detection)
